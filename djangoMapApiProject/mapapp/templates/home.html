@@ -3,9 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #google-map {
+          height: 100%;
+        }
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+      </style>
     <title>Document</title>
 </head>
 <body>
-    
+    <h3>Home, Sweet Home!</h3>
+    <div id="kakao-map" style="width:500px;height:400px;"></div>
+    <div id="google-map"></div>
+    <script 
+        type="text/javascript" 
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7260a191f01351c21220c93a6b3dc67c">
+    </script>
+    <script defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi8YTwxceCi-sXAuVRkdqJ4iA5rtJLOQw&callback=initMap">
+    </script>
+    <script>
+        var kakao_map;
+        function init_kakao_map() {
+            var container = document.getElementById('kakao-map');
+            var options = {
+                center: new kakao.maps.LatLng(37.2899681, 127.1110437),
+                level: 3
+            };
+            kakao_map = new kakao.maps.Map(container, options);
+        }
+        init_kakao_map();
+        var google_map;
+        function initMap() {
+            google_map = new google.maps.Map(document.getElementById("google-map"), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8
+            });
+        }
+    </script>
 </body>
 </html>
